@@ -1,31 +1,17 @@
 import angular from 'angular';
 import 'muicss/dist/css/mui.css';
+const mui = require('muicss/angular');
+const MODULE_NAME = 'DemoApp';
 
+// Directives
+import mainView from './directives/mainView'
+import naiveSettings from './directives/naiveSettings'
+
+// Redux
 import rootReducer from '../redux';
-//import loggingMiddleware from './loggingMiddleware';
 import ngRedux from 'ng-redux';
 import logger from 'redux-logger'
-
-const mui = require('muicss/angular');
-
-let mainView = () => {
-  return {
-    template: require('./mainView.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'vm'
-  }
-};
-
-class AppCtrl {
-  constructor($ngRedux) {
-    this.url = 'https://github.com/preboot/angular-webpack';
-    this.input1 = true;
-    $ngRedux.dispatch({type: 'APP/SETTINGS/READONLY', payload: true})
-    $ngRedux.dispatch({type: 'APP/SETTINGS/INIT', payload: true})
-  }
-}
-
-const MODULE_NAME = 'DemoApp';
+import { init as InitSettings } from '../redux/settings'
 
 angular.module(MODULE_NAME, [mui, ngRedux])
   .config(($ngReduxProvider) => {
@@ -33,7 +19,10 @@ angular.module(MODULE_NAME, [mui, ngRedux])
     const middleware = reduxDevTools ? [reduxDevTools] : [];
     $ngReduxProvider.createStoreWith(rootReducer, [logger], middleware);
   })
+  .run(($ngRedux) => {
+    $ngRedux.dispatch(InitSettings())
+  })
   .directive('mainView', mainView)
-  .controller('AppCtrl', ['$ngRedux', AppCtrl]);
+  .directive('naiveSettings', naiveSettings)
 
 export default MODULE_NAME;

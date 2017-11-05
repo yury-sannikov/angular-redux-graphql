@@ -2,11 +2,13 @@ import { createAction } from 'redux-actions'
 import { createReducer } from 'redux-ramda'
 import * as R from 'ramda'
 
-
+// Action names. 
+// Do not export actio names, instead export action creators
 const INIT = 'APP/SETTINGS/INIT'
 const SET_READONLY = 'APP/SETTINGS/READONLY'
 
-// Actions
+// Action creators
+export const init = createAction(INIT)
 export const setReadonly = createAction(SET_READONLY)
 
 // State
@@ -19,7 +21,9 @@ export default createReducer(initialState, [
 ])
 
 // Selectors
-export const getReadonly = (state) => state.readonly
+export const getSimpleState = R.path(['settings', 'readonly'])
+
+
 
 /*
 import { createSelector } from 'reselect'
