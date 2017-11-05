@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="DemoApp" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular App</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <base href="/">
+</head>
+<body>
+  <mui-appbar>
+      <div class="mui-container">
+      <table style="width: 100%">
+          <tr class="mui--appbar-height">
+            <td class="mui--text-title">Ellipsis Redux Ecosystem Demo</td>
+            <td class="mui--text-right">
+                <mui-dropdown color="primary" label="Settings">
+                    <mui-dropdown-item link="#/link1">Option 1</mui-dropdown-item>
+                    <mui-dropdown-item>Option 2</mui-dropdown-item>
+                    <mui-dropdown-item>Option 3</mui-dropdown-item>
+                    <mui-dropdown-item>Option 4</mui-dropdown-item>
+                  </mui-dropdown>
+            </td>
+          </tr>
+        </table>
+        </div>
+  </mui-appbar>
+  <main-view></main-view>
+</body>
+</html>

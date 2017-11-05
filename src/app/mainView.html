@@ -1,0 +1,35 @@
+<mui-container>
+  <div class="mui--appbar-height"></div>
+  <div class="mui--appbar-height"></div>
+  <h1>TODO List</h1>
+  <mui-panel>
+    <mui-form name="form1">
+      <legend>Title</legend>
+      <mui-checkbox ng-model="vm.input1" name="inputc1" label="Option one" ng-checked="true"></mui-checkbox>
+      <mui-checkbox ng-model="vm.input1" name="inputc2" label="Option one" ng-checked="true"></mui-checkbox>
+      <mui-checkbox ng-model="vm.input1" name="inputc3" label="Option one" ng-checked="true"></mui-checkbox>
+      <mui-checkbox ng-model="vm.input1" name="inputc4" label="Option one" ng-checked="true"></mui-checkbox>
+      <mui-input name="inputA1" ng-model="form1.inputA"></mui-input>
+      <mui-button color="primary">submit</mui-button>
+    </mui-form>
+  </mui-panel>
+
+  <mui-panel>
+    <mui-form name="form2">
+      <fieldset>
+        <legend>Fieldset1</legend>
+        <mui-input name="inputC1x" ng-model="form3.inputC1"></mui-input>
+        <mui-input name="inputC2x" ng-model="form3.inputC2"></mui-input>
+      </fieldset>
+      <fieldset>
+        <legend>Fieldset2</legend>
+        <mui-input name="inputC3x" ng-model="form3.inputC4"></mui-input>
+        <mui-input name="inputC4x" ng-model="form3.inputC4"></mui-input>
+      </fieldset>
+      <mui-button color="primary">submit</mui-button>
+    </mui-form>
+  </mui-panel>
+
+</mui-container>
+<footer>
+</footer>
