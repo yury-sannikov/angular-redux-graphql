@@ -12,7 +12,7 @@ function directive() {
         template,
         scope: {
         },
-        controller: ['$ngRedux', '$scope', Controller],
+        controller: ['$ngRedux', '$scope', 'epicSubscription', Controller],
         controllerAs: 'vm',
         bindToController: true
     }
@@ -26,7 +26,20 @@ const mapDispatchToScope = {
     setReadonly
 }
 
-function Controller($ngRedux, $scope) {
+function Controller($ngRedux, $scope, epicSubscription) {
     let unsubscribe = $ngRedux.connect(mapStateToThis, mapDispatchToScope)(this);
-    $scope.$on('$destroy', unsubscribe);
+
+    
+    const pingEpic = action$ =>
+    action$.filter(action => action.type === 'APP/SETTINGS/READONLY')
+      .delay(1000)
+      .mapTo({ type: 'PONG dir' });    
+    
+    epicSubscription.registerEpic(pingEpic);
+
+    $scope.$on('$destroy', () => {
+        unsubscribe();
+        epicSubscription.deregisterEpic(pingEpic);
+    });
+
 }
