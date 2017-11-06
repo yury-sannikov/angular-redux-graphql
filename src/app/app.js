@@ -1,11 +1,13 @@
 import angular from 'angular';
 import 'muicss/dist/css/mui.css';
+import '../style/app.css';
 const mui = require('muicss/angular');
 const MODULE_NAME = 'DemoApp';
 
 // Directives
 import mainView from './directives/mainView'
 import naiveSettings from './directives/naiveSettings'
+import settingsWatcher from './directives/settingsWatcher'
 
 // Services
 import epicSubscription from '../app/providers/epicSubscription'
@@ -32,5 +34,6 @@ angular.module(MODULE_NAME, [mui, ngRedux])
   })
   .directive('mainView', mainView)
   .directive('naiveSettings', naiveSettings)
+  .directive('settingsWatcher', settingsWatcher)
 
 export default MODULE_NAME;

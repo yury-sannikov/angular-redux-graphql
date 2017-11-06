@@ -27,19 +27,8 @@ const mapDispatchToScope = {
 }
 
 function Controller($ngRedux, $scope, epicSubscription) {
-    let unsubscribe = $ngRedux.connect(mapStateToThis, mapDispatchToScope)(this);
-
-    
-    const pingEpic = action$ =>
-    action$.filter(action => action.type === 'APP/SETTINGS/READONLY')
-      .delay(1000)
-      .mapTo({ type: 'PONG dir' });    
-    
-    epicSubscription.registerEpic(pingEpic);
-
-    $scope.$on('$destroy', () => {
-        unsubscribe();
-        epicSubscription.deregisterEpic(pingEpic);
-    });
+    $scope.$on('$destroy',
+        $ngRedux.connect(mapStateToThis, mapDispatchToScope)(this)
+    );
 
 }
