@@ -7,7 +7,8 @@
     "server": "webpack-dev-server --port 7070 --history-api-fallback --inline --progress",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
-    "start": "npm run server"
+    "start": "npm run server",
+    "fakedb": "json-server --watch ./fakedb/db.json"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/preboot/angularjs-webpack",
   "dependencies": {
     "angular": "^1.5.0",
+    "json-server": "^0.12.1",
     "muicss": "^0.9.28",
     "ng-redux": "^3.5.2",
     "ramda": "^0.25.0",
