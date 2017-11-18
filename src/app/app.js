@@ -7,6 +7,7 @@ const MODULE_NAME = 'DemoApp';
 // Directives
 import mainView from './directives/mainView'
 import naiveSettings from './directives/naiveSettings'
+import settingsThunk from './directives/settingsThunk'
 import settingsWatcher from './directives/settingsWatcher'
 
 // Services
@@ -16,6 +17,7 @@ import epicSubscription from '../app/providers/epicSubscription'
 import rootReducer from '../redux';
 import ngRedux from 'ng-redux';
 import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 import { init as InitSettings } from '../redux/settings'
 
 
@@ -27,13 +29,18 @@ angular.module(MODULE_NAME, [mui, ngRedux])
 
     const epicMiddleware = epicSubscriptionProvider.setupEpicMiddleware()
 
-    $ngReduxProvider.createStoreWith(rootReducer, [logger, epicMiddleware], middleware);
+    $ngReduxProvider.createStoreWith(rootReducer, [
+      thunk,
+      logger,
+      epicMiddleware
+    ], middleware);
   })
   .run(($ngRedux) => {
-    $ngRedux.dispatch(InitSettings())
+    $ngRedux.dispatch(InitSettings()) 
   })
   .directive('mainView', mainView)
   .directive('naiveSettings', naiveSettings)
+  .directive('settingsThunk', settingsThunk)
   .directive('settingsWatcher', settingsWatcher)
 
 export default MODULE_NAME;

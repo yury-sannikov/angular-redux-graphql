@@ -1,0 +1,36 @@
+<div style="min-height: 45pt;">
+    <mui-form name="form1">
+            <label>
+                    <input type="checkbox"
+                    ng-model="::vm.settingObj.simpleValue"
+                    ng-change="vm.setReadonlyThunk(vm.settingObj.simpleValue)"
+                    name="simpleValueInput" />
+                    &nbsp;&nbsp;Set Readonly (Error)
+            </label>
+            <label style="margin-left: 91pt">
+                    <input type="checkbox"
+                    ng-model="::vm.settingObj.simpleValue"
+                    ng-change="vm.setReadonlyThunkSuccess(vm.settingObj.simpleValue)"
+                    name="simpleValueInput" />
+                    &nbsp;&nbsp;Set Readonly (Success)
+            </label>
+            <br/>
+            <label>
+                    <input type="checkbox"
+                    ng-model="::vm.settingObj.simpleValue"
+                    ng-change="vm.setReadonlyThunkWithFeedback(vm.settingObj.simpleValue)"
+                    name="simpleValueInput" />
+                    &nbsp;&nbsp;Set Readonly (Error, Feedback)
+                </label>
+            <label style="margin-left: 40pt">
+                    <input type="checkbox"
+                    ng-model="::vm.settingObj.simpleValue"
+                    ng-change="vm.setReadonlyThunkWithFeedbackSuccess(vm.settingObj.simpleValue)"
+                    name="simpleValueInput" />
+                    &nbsp;&nbsp;Set Readonly (Success, Feedback)
+            </label>
+
+            <div ng-show="vm.fetching" class="mui--text-accent">fetching...</div>
+    </mui-form>
+</div>
+    
