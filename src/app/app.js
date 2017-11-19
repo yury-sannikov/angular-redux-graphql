@@ -12,11 +12,13 @@ import naiveSettings from './directives/naiveSettings'
 import settingsThunk from './directives/settingsThunk'
 import settingsMiddleware from './directives/settingsMiddleware'
 import settingsWatcher from './directives/settingsWatcher'
+import eventList from './directives/eventList'
 
 // Services
 import epicSubscription from '../app/providers/epicSubscription'
 import { SettingsService } from '../app/services/settingsService'
 import { BounceSideEffectsService } from '../app/services/bounceSideEffectsService'
+import { GraphQLService } from '../app/services/graphqlService'
 
 // Redux
 import rootReducer from '../redux';
@@ -38,6 +40,7 @@ angular.module(MODULE_NAME, [mui, ngRedux, angularAnimate, toastr])
   .provider('epicSubscription', epicSubscription)
   .service('settingsService', SettingsService)
   .service('bounceSideEffectsService', BounceSideEffectsService)
+  .service('qraphQLService', GraphQLService)
   .config(($ngReduxProvider, epicSubscriptionProvider) => {
     const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     let middleware = reduxDevTools ? [reduxDevTools] : [];
@@ -61,5 +64,6 @@ angular.module(MODULE_NAME, [mui, ngRedux, angularAnimate, toastr])
   .directive('settingsThunk', settingsThunk)
   .directive('settingsMiddleware', settingsMiddleware)
   .directive('settingsWatcher', settingsWatcher)
+  .directive('eventList', eventList)
 
 export default MODULE_NAME;

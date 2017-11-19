@@ -57,7 +57,12 @@ export const serviceMiddleware = resolver => store => next => action => {
     const payload = _.isArray(action.payload) ? [...action.payload] : [action.payload]
     promise = method.call(service, ...payload, action.meta);
 
-    if (!promise || typeof(promise.then) !== 'function') {
+    if (!promise) {
+      // A kind of fire-and-forget API call with no response
+      return;
+    }
+
+    if (typeof(promise.then) !== 'function') {
       throw Error(`Service method ${serviceCall.service}.${serviceCall.sel} does not return promise.`);
     }
   }

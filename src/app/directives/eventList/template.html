@@ -1,0 +1,11 @@
+<mui-form name="form1">
+  <legend>Event List</legend>
+  <div class="mui-container-fluid">
+    <div class="mui-row" ng-repeat="event in vm.events.data track by event.id">
+        <div class="mui-col-md-8">{{event.description}}</div>
+        <div class="mui-col-md-4">{{event.url}}</div>
+    </div>
+  </div>
+  <mui-input name="inputA1" ng-model="form1.inputA"></mui-input>
+  <mui-button color="primary">submit</mui-button>
+</mui-form>
