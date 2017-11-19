@@ -1,0 +1,19 @@
+<div style="min-height: 35pt;">
+    <mui-form name="form1">
+            <label>
+                    <input type="checkbox"
+                    ng-model="::vm.settingObj.simpleValue"
+                    ng-change="vm.setReadonly(vm.settingObj.simpleValue)"
+                    name="simpleValueInput" />
+                    &nbsp;&nbsp;Set Readonly (Error)
+            </label>
+            <label style="margin-left: 91pt">
+                    <input type="checkbox"
+                    ng-model="::vm.settingObj.simpleValue"
+                    ng-change="vm.setReadonlySuccess(vm.settingObj.simpleValue)"
+                    name="simpleValueInput" />
+                    &nbsp;&nbsp;Set Readonly (Success)
+            </label>
+    </mui-form>
+</div>
+    
