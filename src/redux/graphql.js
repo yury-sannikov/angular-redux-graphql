@@ -3,6 +3,7 @@ import { createReducer } from 'redux-ramda'
 import * as R from 'ramda'
 import { serviceCallFactory, withSideEffectsAdapter } from './utils'
 import { showToast } from './settingsMiddleware'
+import { createSelector } from 'reselect'
 
 const GRAPHQL_SERVICE_NAME = 'qraphQLService'
 
@@ -38,20 +39,11 @@ export default createReducer(initialState, [
 // Selectors
 export const getData = R.path(['graphql', 'data'])
 export const getLoading = R.path(['graphql', 'loading'])
-/**
- * mutation
-:
-"DELETED"
-node
-:
-null
-previousValues
-:
-{id: "cja71lidx2c1t0183v5kyfczl", __typename: "EventPreviousValues"}
-updatedFields
-:
-null
 
-
-
- */
+export const getEventList = createSelector(
+  [ getData, getLoading ],
+  (data) => {
+    //heavyComputationCall();
+    return data;
+  }
+)

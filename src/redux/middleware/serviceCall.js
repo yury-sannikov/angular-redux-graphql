@@ -51,7 +51,6 @@ export const serviceMiddleware = resolver => store => next => action => {
       throw Error(`service call middleware is unable to find function ${serviceCall.service}.${serviceCall.sel}`);
     }
 
-    store.dispatch(Object.assign({}, action, {type: action.type, meta: requestMeta }))
     store.dispatch(Object.assign({}, action, {type: asRequest(action.type), meta: requestMeta }))
 
     const payload = _.isArray(action.payload) ? [...action.payload] : [action.payload]

@@ -51,8 +51,8 @@ angular.module(MODULE_NAME, [mui, ngRedux, angularAnimate, toastr])
 
     $ngReduxProvider.createStoreWith(rootReducer, [
       thunk,
-      serviceMiddleware(serviceResolver),
       logger,
+      serviceMiddleware(serviceResolver),
       epicMiddleware,
     ], middleware);
   })

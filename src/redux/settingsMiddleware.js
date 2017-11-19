@@ -1,10 +1,11 @@
 import { createAction } from 'redux-actions'
 import { createReducer } from 'redux-ramda'
 import * as R from 'ramda'
-import { asOptimisticReject, fakeFetch, serviceCallFactory, withSideEffectsAdapter } from './utils'
+import { asOptimisticReject, asRequest, fakeFetch, serviceCallFactory, withSideEffectsAdapter } from './utils'
 
 // Action names
 export const SET_READONLY_THUNK = 'APP/SETTINGS_MIDDLEWARE/SET_READONLY'
+const SET_READONLY_THUNK_REQUEST = asRequest(SET_READONLY_THUNK)
 const SET_READONLY_THUNK_REJECT = asOptimisticReject(SET_READONLY_THUNK)
 
 // State
@@ -12,7 +13,7 @@ const initialState = {readonly: false}
 
 // Reducers
 export default createReducer(initialState, [
-    [SET_READONLY_THUNK, R.assoc('readonly')],
+    [SET_READONLY_THUNK_REQUEST, R.assoc('readonly')],
     [SET_READONLY_THUNK_REJECT, R.assoc('readonly')]
 ])
 

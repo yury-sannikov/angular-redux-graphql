@@ -1,6 +1,6 @@
 import { 
   subscribe,
-  getData
+  getEventList
 } from '../../../redux/graphql'
 
 export default [
@@ -23,7 +23,7 @@ function directive() {
 
 const mapStateToThis = state => ({
   events: {
-      data: getData(state)
+      data: getEventList(state)
   }
 })
 
