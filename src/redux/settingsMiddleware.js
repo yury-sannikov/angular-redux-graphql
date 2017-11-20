@@ -33,15 +33,17 @@ export const showToast = createAction(
 const rejectSettingsAction = createAction(SET_READONLY_THUNK_REJECT, readonly => !readonly)
 
 // Action creators
-// Create an action to revert 
+// Create an action to revert
 
-export const setReadonly = withSideEffectsAdapter(
-  createAction(
-    SET_READONLY_THUNK, null, serviceCallFactory(SETTINGS_SERVICE_NAME, 'setReadonly')
-  ),
-  showToast('Settings has been updated'),
-  [showToast('Settings update error'), rejectSettingsAction]
-)
+export const setReadonly =
+  withSideEffectsAdapter(
+    createAction(
+      SET_READONLY_THUNK, null,
+        serviceCallFactory(SETTINGS_SERVICE_NAME, 'setReadonly')
+    ),
+    showToast('Settings has been updated'),
+    [showToast('Settings update error'), rejectSettingsAction]
+  )
 
 const simulateSuccessAdapter = actionCreator => payload => {
   const action = actionCreator(payload)
@@ -50,5 +52,5 @@ const simulateSuccessAdapter = actionCreator => payload => {
 }
 
 export const setReadonlySuccess = simulateSuccessAdapter(setReadonly)
-  
+
 

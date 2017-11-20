@@ -1,4 +1,4 @@
-import { 
+import {
     getSimpleState,
     getFetchingState,
     setReadonlyThunk,
@@ -40,6 +40,5 @@ const mapDispatchToScope = {
 }
 
 function Controller($ngRedux) {
-
     this.$onDestroy = $ngRedux.connect(mapStateToThis, mapDispatchToScope)(this)
 }

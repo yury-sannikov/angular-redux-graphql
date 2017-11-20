@@ -16,7 +16,7 @@ export const bounceSideEffects = serviceResolver => next => {
   resolver = serviceResolver
   return (reducer, initialState) => {
     let store = next((state, action) => {
-      const { meta: { sideEffects } = {} } = action;
+      const { meta: { sideEffects } = {} } = action.action || action;
       action = sideEffects ? convertSideEffects(action, sideEffects) : action
       return reducer(state, action);
     }, initialState);
@@ -25,7 +25,7 @@ export const bounceSideEffects = serviceResolver => next => {
 }
 
 const convertSideEffect = (action, sideEffect) => {
-  const meta = Object.assign({}, sideEffect.meta || {}, {bounced: true, origin: action});
+  const meta = Object.assign({}, sideEffect.meta || {}, {bounced: true, origin: action.action || action});
   return Object.assign({}, sideEffect, { meta })
 }
 

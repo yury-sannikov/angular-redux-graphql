@@ -10,10 +10,10 @@ const transform = (request, type, sideEffects) => response => ({
   }
 });
 
-const sideEffectsTransform = (sideEffects, index) => 
+const sideEffectsTransform = (sideEffects, index) =>
   _.isArray(sideEffects) ? sideEffects.slice(index, index + 1) : sideEffects;
 
-const handlerDispatcher = (dispatch, request, sideEffects) => (type, index) => response => 
+const handlerDispatcher = (dispatch, request, sideEffects) => (type, index) => response =>
   dispatch(
     transform(request, type, sideEffectsTransform(sideEffects, index))(response)
   )
